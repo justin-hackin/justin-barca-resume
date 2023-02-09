@@ -3,6 +3,7 @@ import fs from 'fs/promises';
 import { marked } from 'marked';
 import path from 'path';
 import invariant from 'tiny-invariant';
+import { HTMLSource } from '../getCMSIntegration';
 
 export interface ProfessionalExperienceMarkdownAttributes {
   organization: string;
@@ -13,7 +14,7 @@ export interface ProfessionalExperienceMarkdownAttributes {
 
 export interface CMSProfessionalExperience {
   attributes: ProfessionalExperienceMarkdownAttributes;
-  html: string;
+  html: HTMLSource;
   slug: string;
 }
 

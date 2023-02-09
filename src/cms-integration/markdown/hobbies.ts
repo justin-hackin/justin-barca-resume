@@ -1,9 +1,10 @@
 import fs from 'fs/promises';
 import { marked } from 'marked';
 import path from 'path';
+import { HTMLSource } from '../getCMSIntegration';
 
 export interface CMSHobbies {
-  html: string;
+  html: HTMLSource;
 }
 
 const basePath = process.cwd();

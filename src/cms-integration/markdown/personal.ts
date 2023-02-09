@@ -3,6 +3,7 @@ import fs from 'fs/promises';
 import { marked } from 'marked';
 import path from 'path';
 import invariant from 'tiny-invariant';
+import { HTMLSource } from '../getCMSIntegration';
 
 export interface PersonalMarkdownAttributes {
   location: string;
@@ -14,7 +15,7 @@ export interface PersonalMarkdownAttributes {
 
 export interface CMSPersonalInformation {
   attributes: PersonalMarkdownAttributes;
-  html: string;
+  html: HTMLSource;
 }
 
 const basePath = process.cwd();

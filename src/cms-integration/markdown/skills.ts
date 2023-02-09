@@ -3,6 +3,7 @@ import fs from 'fs/promises';
 import { marked } from 'marked';
 import path from 'path';
 import invariant from 'tiny-invariant';
+import { HTMLSource } from '../getCMSIntegration';
 
 export interface SkillsMarkdownAttributes {
   title: string;
@@ -10,7 +11,7 @@ export interface SkillsMarkdownAttributes {
 
 export interface CMSSkillCategory {
   attributes: SkillsMarkdownAttributes;
-  html: string;
+  html: HTMLSource;
   slug: string;
 }
 

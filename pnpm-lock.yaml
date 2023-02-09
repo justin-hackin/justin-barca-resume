@@ -33,6 +33,8 @@ specifiers:
   postcss: 8.4.21
   prettier: 2.8.3
   prettier-plugin-tailwindcss: 0.2.2
+  prismic-javascript: 3.0.2
+  prismic-reactjs: 1.3.4
   react: 18.2.0
   react-dom: 18.2.0
   react-pdf-html: 1.1.17
@@ -55,6 +57,8 @@ dependencies:
   marked: 4.2.12
   next: 13.1.1_biqbaboplfbrettd7655fr4n2y
   next-compose-plugins: 2.2.1
+  prismic-javascript: 3.0.2
+  prismic-reactjs: 1.3.4_react@18.2.0
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-pdf-html: 1.1.17_kxebyuolwpw5t6telhjkto4yd4
@@ -5146,6 +5150,37 @@ packages:
       react-is: 18.2.0
     dev: true
 
+  /prismic-helpers/1.0.3:
+    resolution: {integrity: sha512-eGCSflFwsWeXe7BdqWWGjjoaq1SPr61Y55xIUkgYumKFmfJsK9TVcSkRp0rdwW0hGnnDSRvjJwIo2kkDwG7KxA==}
+    dev: false
+
+  /prismic-javascript/3.0.2:
+    resolution: {integrity: sha512-9RpituEVE/eZAlj+vUVy61z2IQJdL0zRYuy+IHdiUA7/37zoiCE/Z0AbI0zAWyi5UDXizgQ2TuQTLkOm62KGwA==}
+    deprecated: 'prismic-javascript has moved to @prismicio/client! No worries, you''re safe to stay on prismic-javascript but it will no longer receive updates nor fixes (excluding security ones). Upgrading to @prismicio/client should be seamless for most users, if any doubt check out the changelog: https://github.com/prismicio/prismic-javascript/releases or reach out to us on our community forum: https://community.prismic.io'
+    dependencies:
+      cross-fetch: 3.1.5
+    transitivePeerDependencies:
+      - encoding
+    dev: false
+
+  /prismic-reactjs/1.3.4_react@18.2.0:
+    resolution: {integrity: sha512-f2k8VOC5p8F9QOS1DIfXgU9HBRQgoj3vpPIzbUlKo6PvEW+jbcJIN2MOCscuvgh7JDB2npUS3nHe4lhjbSRofA==}
+    peerDependencies:
+      react: '>=16.0.0'
+    dependencies:
+      prismic-helpers: 1.0.3
+      prismic-richtext: 1.0.3
+      prop-types: 15.8.1
+      react: 18.2.0
+    dev: false
+
+  /prismic-richtext/1.0.3:
+    resolution: {integrity: sha512-ZM45dVPL713+oDpt8ysWRY2pw3esBxRrqBlUO+q/T0WK0SNVSq29tQYhVdIALd8hRfF7X1lfpW0Q0YymEdh0AA==}
+    dependencies:
+      ramda: 0.26.1
+      uuid: 3.4.0
+    dev: false
+
   /process-nextick-args/2.0.1:
     resolution: {integrity: sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==}
     dev: true
@@ -5192,6 +5227,10 @@ packages:
     resolution: {integrity: sha512-WuyALRjWPDGtt/wzJiadO5AXY+8hZ80hVpe6MyivgraREW751X3SbhRvG3eLKOYN+8VEvqLcf3wdnt44Z4S4SA==}
     engines: {node: '>=10'}
     dev: true
+
+  /ramda/0.26.1:
+    resolution: {integrity: sha512-hLWjpy7EnsDBb0p+Z3B7rPi3GDeRG5ZtiI33kJhTt+ORCd38AbAIjB/9zRIUoeTbE/AVX5ZkU7m6bznsvrf8eQ==}
+    dev: false
 
   /randombytes/2.1.0:
     resolution: {integrity: sha512-vYl3iOX+4CKUWuxGi9Ukhie6fsqXqS9FE2Zaic4tNFD2N2QQaXOMFbuKK4QmDHC0JO6B1Zp41J0LpT0oR68amQ==}
@@ -6036,6 +6075,12 @@ packages:
 
   /util-deprecate/1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
+
+  /uuid/3.4.0:
+    resolution: {integrity: sha512-HjSDRw6gZE5JMggctHBcjVak08+KEVhSIiDzFnT9S9aegmp85S/bReBVTb4QTFaRNptJ9kuYaNhnbNEOkbKb/A==}
+    deprecated: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+    hasBin: true
+    dev: false
 
   /v8-to-istanbul/9.0.1:
     resolution: {integrity: sha512-74Y4LqY74kLE6IFyIjPtkSTWzUZmj8tdHT9Ii/26dvQ6K9Dl2NbEfj0XgU2sHCtKgt5VupqhlO/5aWuqS+IY1w==}

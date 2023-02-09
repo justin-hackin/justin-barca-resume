@@ -3,6 +3,7 @@ import fs from 'fs/promises';
 import { marked } from 'marked';
 import path from 'path';
 import invariant from 'tiny-invariant';
+import { HTMLSource } from '../getCMSIntegration';
 
 export interface AchievementMarkdownAttributes {
   achievement: string;
@@ -12,7 +13,7 @@ export interface AchievementMarkdownAttributes {
 
 export interface CMSAchievement {
   attributes: AchievementMarkdownAttributes;
-  html: string;
+  html: HTMLSource;
   slug: string;
 }
 
