@@ -10,6 +10,6 @@ export const prismicGetSkillCategories = async (): Promise<
   return document.results.map((document) => ({
     attributes: { title: document.data.level_name },
     slug: document.id,
-    html: renderToStaticMarkup(document.data.skills_list),
+    html: document.data.skills_list,
   }));
 };
