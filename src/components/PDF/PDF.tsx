@@ -9,13 +9,13 @@ import {
   View,
 } from '@react-pdf/renderer';
 import React from 'react';
+import Html from 'react-pdf-html';
 import { HtmlProps } from 'react-pdf-html/dist/Html';
 import resumeConfig from '../../../edit-me/config/resumeConfig';
 import { CMSData } from '../../cms-integration/getCMSIntegration';
 import { getFullName } from '../../helpers/utils';
 import accents from '../../tokens/accents';
 import neutrals from '../../tokens/neutrals';
-import PdfProse from '../PdfProse/PdfProse';
 
 const accentColor = accents[resumeConfig.accentColor].light;
 const neutralColor = neutrals[resumeConfig.neutralColor].light;
@@ -208,7 +208,7 @@ const PDF: React.FC<CMSData> = (props) => {
 
   return (
     // @ts-ignore
-    <Document author={fullName} title={`Resume for ${fullName}, ${year}`}>
+    <Document author={fullName} title={`Résume for ${fullName}, ${year}`}>
       {/* @ts-ignore */}
       <Page size="LETTER" style={styles.page}>
         <View style={styles.sidebar}>
@@ -227,7 +227,7 @@ const PDF: React.FC<CMSData> = (props) => {
                 />
                 <Text>About Me</Text>
               </View>
-              <PdfProse {...htmlProps}>{personalInformation.html}</PdfProse>
+              <Html {...htmlProps}>{personalInformation.html}</Html>
             </View>
             <View style={styles.section}>
               <View style={styles.sectionHeadingNonHTML}>
@@ -246,7 +246,7 @@ const PDF: React.FC<CMSData> = (props) => {
                   <Text style={styles.bold}>
                     {privateField.attributes.label}:&nbsp;
                   </Text>
-                  <PdfProse {...htmlProps}>{privateField.html}</PdfProse>
+                  <Html {...htmlProps}>{privateField.html}</Html>
                 </View>
               ))}
             </View>
@@ -274,7 +274,7 @@ const PDF: React.FC<CMSData> = (props) => {
                     </View>
                     <Text style={styles.bold}>{skill.attributes.title}</Text>
                   </View>
-                  <PdfProse {...htmlProps}>{skill.html}</PdfProse>
+                  <Html {...htmlProps}>{skill.html}</Html>
                 </View>
               ))}
             </View>
@@ -311,9 +311,7 @@ const PDF: React.FC<CMSData> = (props) => {
                       : 'Current'}
                   </Text>
                 </View>
-                <PdfProse {...htmlProps}>
-                  {professionalExperience.html}
-                </PdfProse>
+                <Html {...htmlProps}>{professionalExperience.html}</Html>
               </View>
             ))}
           </View>
@@ -341,7 +339,7 @@ const PDF: React.FC<CMSData> = (props) => {
                     {achievement.attributes.institution}
                   </Text>
                 </View>
-                <PdfProse {...htmlProps}>{achievement.html}</PdfProse>
+                <Html {...htmlProps}>{achievement.html}</Html>
               </View>
             ))}
           </View>
@@ -353,7 +351,7 @@ const PDF: React.FC<CMSData> = (props) => {
               />
               <Text>Hobbies &amp; Interests</Text>
             </View>
-            <PdfProse
+            <Html
               {...htmlProps}
               stylesheet={{
                 ...htmlProps.stylesheet,
@@ -361,7 +359,7 @@ const PDF: React.FC<CMSData> = (props) => {
               }}
             >
               {hobbies.html}
-            </PdfProse>
+            </Html>
           </View>
         </View>
       </Page>

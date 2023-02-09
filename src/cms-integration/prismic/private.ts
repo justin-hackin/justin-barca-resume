@@ -1,5 +1,5 @@
 import { CMSPrivateInformation } from '../markdown/private';
-import { cmsClient } from './common';
+import { cmsClient, renderToStaticMarkup } from './common';
 import prismic from 'prismic-javascript';
 
 export const prismicGetPrivateInformation = async (): Promise<
@@ -11,11 +11,13 @@ export const prismicGetPrivateInformation = async (): Promise<
       orderings: '[my.private_information.label]',
     },
   );
-  return document.results.map(({ id, data }) => ({
-    slug: id,
-    attributes: {
-      label: data.label,
-    },
-    html: data.content,
-  }));
+  return Promise.all(
+    document.results.map(async ({ id, data }) => ({
+      slug: id,
+      attributes: {
+        label: data.label,
+      },
+      html: renderToStaticMarkup(data.content),
+    })),
+  );
 };

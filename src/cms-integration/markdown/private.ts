@@ -3,7 +3,6 @@ import fs from 'fs/promises';
 import { marked } from 'marked';
 import path from 'path';
 import invariant from 'tiny-invariant';
-import { HTMLSource } from '../getCMSIntegration';
 
 export interface PrivateInformationMarkdownAttributes {
   label: string;
@@ -11,7 +10,7 @@ export interface PrivateInformationMarkdownAttributes {
 
 export interface CMSPrivateInformation {
   attributes: PrivateInformationMarkdownAttributes;
-  html: HTMLSource;
+  html: string;
   slug: string;
 }
 

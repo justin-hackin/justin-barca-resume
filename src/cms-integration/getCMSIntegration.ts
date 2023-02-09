@@ -17,10 +17,8 @@ import { prismicGetLinks } from './prismic/links';
 import { prismicGetPersonalInformation } from './prismic/personal';
 import { prismicGetProfessionalExperiences } from './prismic/professional';
 import { prismicGetSkillCategories } from './prismic/skills';
-import { RichTextBlock } from 'prismic-reactjs';
 
 type CMS = 'markdown' | 'prismic';
-export type HTMLSource = string | RichTextBlock[];
 
 export interface CMSData {
   achievements: CMSAchievement[];

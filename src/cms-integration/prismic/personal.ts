@@ -1,5 +1,5 @@
 import { CMSPersonalInformation } from '../markdown/personal';
-import { cmsClient } from './common';
+import { cmsClient, renderToStaticMarkup } from './common';
 
 export const prismicGetPersonalInformation =
   async (): Promise<CMSPersonalInformation> => {
@@ -10,6 +10,6 @@ export const prismicGetPersonalInformation =
         givenName: data.given_name,
         location: data.location,
       },
-      html: data.about_me_description,
+      html: renderToStaticMarkup(data.about_me_description),
     };
   };

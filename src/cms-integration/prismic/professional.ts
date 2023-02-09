@@ -1,4 +1,4 @@
-import { cmsClient } from './common';
+import { cmsClient, renderToStaticMarkup } from './common';
 import { CMSProfessionalExperience } from '../markdown/professional';
 import prismic from 'prismic-javascript';
 
@@ -26,7 +26,7 @@ export const prismicGetProfessionalExperiences = async (): Promise<
       startDate: dateFormatMonthYear(data.start_date),
       title: data.position_title,
     },
-    html: data.position_description,
+    html: renderToStaticMarkup(data.position_description),
   }));
   return experiences;
 };

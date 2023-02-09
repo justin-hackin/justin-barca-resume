@@ -3,7 +3,6 @@ import React from 'react';
 import { CMSPersonalInformation } from '../../cms-integration/markdown/personal';
 import { CMSPrivateInformation } from '../../cms-integration/markdown/private';
 import { SectionHeading } from '../SectionHeading/SectionHeading';
-import Prose from '../Prose/Prose';
 
 interface ContactInformationProps {
   personalInformation: CMSPersonalInformation;
@@ -26,19 +25,8 @@ export const ContactInformation: React.FC<ContactInformationProps> = ({
         {/* private access required */}
         {privateInformation?.map((privateField) => (
           <li className="mt-3" key={privateField.attributes.label}>
-            <strong>{`${privateField.attributes.label}: `}</strong>{' '}
-            <span>
-              <Prose
-                richTextProps={{
-                  elements: {
-                    paragraph: ({ children }) => (
-                      <p style={{ display: 'inline' }}>{children}</p>
-                    ),
-                  },
-                }}
-                html={privateField.html}
-              />
-            </span>
+            <strong>{privateField.attributes.label}</strong>{' '}
+            <div dangerouslySetInnerHTML={{ __html: privateField.html }} />
           </li>
         ))}
       </ul>

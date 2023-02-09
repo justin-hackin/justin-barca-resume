@@ -1,6 +1,6 @@
-import { CMSSkillCategory } from '../markdown/skills';
-import { cmsClient } from './common';
 import prismic from 'prismic-javascript';
+import { CMSSkillCategory } from '../markdown/skills';
+import { cmsClient, renderToStaticMarkup } from './common';
 
 export const prismicGetSkillCategories = async (): Promise<
   CMSSkillCategory[]
@@ -14,8 +14,7 @@ export const prismicGetSkillCategories = async (): Promise<
   const skills = document.results.map((document) => ({
     attributes: { title: document.data.level_name },
     slug: document.id,
-    // NOTE: in new md setup, this is formatted text, but it is plaintext in my setup from previous version
-    html: document.data.skills_list,
+    html: renderToStaticMarkup(document.data.skills_list),
   }));
   return skills;
 };

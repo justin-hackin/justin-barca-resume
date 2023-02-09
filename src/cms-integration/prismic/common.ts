@@ -14,3 +14,7 @@ export const cmsClient = prismic.client(
   CMS_ENDPOINT,
   createClientOptions(CMS_KEY),
 );
+
+export const renderToStaticMarkup = function (thing) {
+  return 'prismicContent';
+};
