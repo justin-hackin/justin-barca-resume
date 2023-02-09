@@ -40,6 +40,7 @@ const generateCustomLi = (bulletOverrides: any, contentOverrides: any):HtmlRende
         bullet = false;
     } else if (listStyleType.includes('url(')) {
         bullet = (
+            // eslint-disable-next-line jsx-a11y/alt-text
             <Image
                 src={listStyleType.match(/\((.*?)\)/)[1].replace(/(['"])/g, '')}
             />
