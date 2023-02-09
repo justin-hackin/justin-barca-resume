@@ -1,5 +1,4 @@
-import { PrismicRichText } from '../../cms-integration/prismic/common';
-import { RichText } from 'prismic-reactjs';
+import { RichText, RichTextBlock } from 'prismic-reactjs';
 import { HTMLSource } from '../../cms-integration/getCMSIntegration';
 import { HtmlProps } from 'react-pdf-html/dist/Html';
 import Html from 'react-pdf-html';
@@ -9,7 +8,7 @@ type HtmlProseProps = {
 } & Omit<HtmlProps, 'children'>;
 
 // TODO: dedupe
-const isPrismicRichText = (thing: any): thing is PrismicRichText => {
+const isPrismicRichText = (thing: any): thing is RichTextBlock[] => {
   return typeof thing !== 'string';
 };
 

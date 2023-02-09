@@ -26,8 +26,19 @@ export const ContactInformation: React.FC<ContactInformationProps> = ({
         {/* private access required */}
         {privateInformation?.map((privateField) => (
           <li className="mt-3" key={privateField.attributes.label}>
-            <strong>{privateField.attributes.label}</strong>{' '}
-            <Prose html={privateField.html} />
+            <strong>{`${privateField.attributes.label}: `}</strong>{' '}
+            <span>
+              <Prose
+                richTextProps={{
+                  elements: {
+                    paragraph: ({ children }) => (
+                      <p style={{ display: 'inline' }}>{children}</p>
+                    ),
+                  },
+                }}
+                html={privateField.html}
+              />
+            </span>
           </li>
         ))}
       </ul>

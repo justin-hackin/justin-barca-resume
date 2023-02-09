@@ -2,6 +2,12 @@ import { cmsClient } from './common';
 import { CMSProfessionalExperience } from '../markdown/professional';
 import prismic from 'prismic-javascript';
 
+const dateFormatMonthYear = (dateStr: string): string =>
+  new Date(dateStr).toLocaleString('en-US', {
+    month: 'long',
+    year: 'numeric',
+  });
+
 export const prismicGetProfessionalExperiences = async (): Promise<
   CMSProfessionalExperience[]
 > => {
@@ -15,12 +21,12 @@ export const prismicGetProfessionalExperiences = async (): Promise<
   const experiences = document.results.map(({ data, id }) => ({
     slug: id,
     attributes: {
-      organization: data.organization,
-      endDate: data.is_current ? undefined : data.end_data,
-      startDate: data.start_date,
-      title: data.postition_title,
+      organization: data.organization_name,
+      endDate: data.is_current ? undefined : dateFormatMonthYear(data.end_date),
+      startDate: dateFormatMonthYear(data.start_date),
+      title: data.position_title,
     },
-    html: data.positionDescription,
+    html: data.position_description,
   }));
   return experiences;
 };

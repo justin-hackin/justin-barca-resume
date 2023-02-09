@@ -9,7 +9,6 @@ import {
   View,
 } from '@react-pdf/renderer';
 import React from 'react';
-import Html from 'react-pdf-html';
 import { HtmlProps } from 'react-pdf-html/dist/Html';
 import resumeConfig from '../../../edit-me/config/resumeConfig';
 import { CMSData } from '../../cms-integration/getCMSIntegration';

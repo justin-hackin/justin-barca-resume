@@ -12,7 +12,7 @@ export const prismicGetSkillCategories = async (): Promise<
     },
   );
   const skills = document.results.map((document) => ({
-    attributes: { title: document.data.title },
+    attributes: { title: document.data.level_name },
     slug: document.id,
     // NOTE: in new md setup, this is formatted text, but it is plaintext in my setup from previous version
     html: document.data.skills_list,

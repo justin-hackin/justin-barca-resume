@@ -4,7 +4,7 @@ import { Header } from './Header';
 
 describe('<Header />', () => {
   test('Snapshot', async () => {
-    const data = await getCMSIntegration('markdown');
+    const data = await getCMSIntegration();
     const { container } = render(
       <Header personalInformation={data.personalInformation} />,
     );
