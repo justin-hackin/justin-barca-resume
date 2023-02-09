@@ -1,5 +1,4 @@
 import { CMSLink } from '../markdown/links';
-import prismic from 'prismic-javascript';
 import { cmsClient } from './common';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faTwitter } from '@fortawesome/free-brands-svg-icons/faTwitter';
@@ -11,12 +10,11 @@ const iconNameToIcon = {
 };
 
 export const prismicGetLinks = async (): Promise<CMSLink[]> => {
-  const document = await cmsClient.query(
-    prismic.Predicates.at('document.type', 'link'),
-    {
-      orderings: '[my.link.title]',
+  const document = await cmsClient.getByType('link', {
+    orderings: {
+      field: 'my.link.title',
     },
-  );
+  });
 
   return document.results.map((document) => ({
     id: document.id,

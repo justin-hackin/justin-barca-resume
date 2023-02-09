@@ -1,6 +1,5 @@
 import { cmsClient, renderToStaticMarkup } from './common';
 import { CMSProfessionalExperience } from '../markdown/professional';
-import prismic from 'prismic-javascript';
 
 const dateFormatMonthYear = (dateStr: string): string =>
   new Date(dateStr).toLocaleString('en-US', {
@@ -11,13 +10,12 @@ const dateFormatMonthYear = (dateStr: string): string =>
 export const prismicGetProfessionalExperiences = async (): Promise<
   CMSProfessionalExperience[]
 > => {
-  const document = await cmsClient.query(
-    prismic.Predicates.at('document.type', 'professional_experience'),
-    {
-      orderings:
-        '[my.professional_experience.is_current desc, my.professional_experience.end_date desc]',
-    },
-  );
+  const document = await cmsClient.getByType('professional_experience', {
+    orderings: [
+      { field: 'my.professional_experience.is_current', direction: 'desc' },
+      { field: 'my.professional_experience.end_date', direction: 'desc' },
+    ], //'[my.professional_experience.is_current desc, my.professional_experience.end_date desc]',
+  });
   const experiences = document.results.map(({ data, id }) => ({
     slug: id,
     attributes: {
