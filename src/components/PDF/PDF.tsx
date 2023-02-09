@@ -194,6 +194,15 @@ const htmlProps: Omit<HtmlProps, 'children'> = {
   },
 };
 
+const hobbiesHtmlProps = {
+  ...htmlProps,
+  stylesheet: {
+    ...htmlProps.stylesheet,
+    h4: { marginBottom: -10 },
+    h6: { marginBottom: 0 },
+  },
+};
+
 const PDF: React.FC<CMSData> = (props) => {
   const {
     achievements,
@@ -205,7 +214,6 @@ const PDF: React.FC<CMSData> = (props) => {
   } = props;
   const fullName = getFullName(personalInformation);
   const year = new Date().getFullYear();
-
   return (
     // @ts-ignore
     <Document author={fullName} title={`Résume for ${fullName}, ${year}`}>
@@ -351,15 +359,7 @@ const PDF: React.FC<CMSData> = (props) => {
               />
               <Text>Hobbies &amp; Interests</Text>
             </View>
-            <Html
-              {...htmlProps}
-              stylesheet={{
-                ...htmlProps.stylesheet,
-                p: { marginBottom: spacers[1] },
-              }}
-            >
-              {hobbies.html}
-            </Html>
+            <Html {...hobbiesHtmlProps}>{hobbies.html}</Html>
           </View>
         </View>
       </Page>
