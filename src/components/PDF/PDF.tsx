@@ -1,21 +1,18 @@
 /* eslint-disable jsx-a11y/alt-text */
-import {
-  Document,
-  Font,
-  Image,
-  Page,
-  StyleSheet,
-  Text,
-  View,
-} from '@react-pdf/renderer';
-import React from 'react';
+import {Document, Font, Image, Page, StyleSheet, Text, View } from '@react-pdf/renderer';
+import React, {HTMLProps} from 'react';
 import Html from 'react-pdf-html';
-import { HtmlProps } from 'react-pdf-html/dist/Html';
+import {HtmlProps} from 'react-pdf-html/dist/Html';
 import resumeConfig from '../../../edit-me/config/resumeConfig';
-import { CMSData } from '../../cms-integration/getCMSIntegration';
-import { getFullName } from '../../helpers/utils';
+import {CMSData} from '../../cms-integration/getCMSIntegration';
+import {getFullName} from '../../helpers/utils';
 import accents from '../../tokens/accents';
 import neutrals from '../../tokens/neutrals';
+import {htmlRenderers} from "./htmlRenderers";
+
+const CustomHtml = ({ children, ...props}: Omit<HTMLProps<any>, 'children'> & { children: string })=>{
+  return <Html {...props} renderers={htmlRenderers}>{children}</Html>
+}
 
 const accentColor = accents[resumeConfig.accentColor].light;
 const neutralColor = neutrals[resumeConfig.neutralColor].light;
@@ -142,6 +139,7 @@ const styles = StyleSheet.create({
     width: 'auto',
   },
   sectionParagraph: { fontWeight: 400, margin: 0 },
+  sectionUl: {margin: 0},
   itemHeading: {
     alignItems: 'center',
     display: 'flex',
@@ -149,7 +147,7 @@ const styles = StyleSheet.create({
     fontSize: fontSizes.s,
     fontWeight: 700,
     marginBottom: spacers[1],
-    marginTop: spacers[3],
+    marginTop: spacers[5],
   },
   itemSubheadingRow: {
     alignItems: 'center',
@@ -188,9 +186,11 @@ const styles = StyleSheet.create({
 
 const htmlProps: Omit<HtmlProps, 'children'> = {
   style: { fontSize: fontSizes.xxs },
+
   stylesheet: {
     a: styles.a,
     p: styles.sectionParagraph,
+    ul: styles.sectionUl
   },
 };
 
@@ -214,6 +214,7 @@ const PDF: React.FC<CMSData> = (props) => {
   } = props;
   const fullName = getFullName(personalInformation);
   const year = new Date().getFullYear();
+  let minPresenceAhead = 100;
   return (
     // @ts-ignore
     <Document author={fullName} title={`Résume for ${fullName}, ${year}`}>
@@ -235,7 +236,7 @@ const PDF: React.FC<CMSData> = (props) => {
                 />
                 <Text>About Me</Text>
               </View>
-              <Html {...htmlProps}>{personalInformation.html}</Html>
+              <CustomHtml {...htmlProps}>{personalInformation.html}</CustomHtml>
             </View>
             <View style={styles.section}>
               <View style={styles.sectionHeadingNonHTML}>
@@ -254,7 +255,7 @@ const PDF: React.FC<CMSData> = (props) => {
                   <Text style={styles.bold}>
                     {privateField.attributes.label}:&nbsp;
                   </Text>
-                  <Html {...htmlProps}>{privateField.html}</Html>
+                  <CustomHtml {...htmlProps}>{privateField.html}</CustomHtml>
                 </View>
               ))}
             </View>
@@ -282,7 +283,7 @@ const PDF: React.FC<CMSData> = (props) => {
                     </View>
                     <Text style={styles.bold}>{skill.attributes.title}</Text>
                   </View>
-                  <Html {...htmlProps}>{skill.html}</Html>
+                  <CustomHtml {...htmlProps}>{skill.html}</CustomHtml>
                 </View>
               ))}
             </View>
@@ -299,7 +300,7 @@ const PDF: React.FC<CMSData> = (props) => {
             </View>
             {professional.map((professionalExperience) => (
               <View key={professionalExperience.slug}>
-                <View style={styles.itemHeading}>
+                <View style={styles.itemHeading} minPresenceAhead={minPresenceAhead}>
                   <Text style={styles.professionalTitle}>
                     {professionalExperience.attributes.title}
                   </Text>
@@ -319,12 +320,12 @@ const PDF: React.FC<CMSData> = (props) => {
                       : 'Current'}
                   </Text>
                 </View>
-                <Html {...htmlProps}>{professionalExperience.html}</Html>
+                <CustomHtml {...htmlProps}>{professionalExperience.html}</CustomHtml>
               </View>
             ))}
           </View>
           <View style={styles.section}>
-            <View style={styles.sectionHeading}>
+            <View style={styles.sectionHeading} minPresenceAhead={minPresenceAhead}>
               <Image
                 src={`${iconPath}/circle-graduation-cap.png`}
                 style={styles.sectionHeadingIcon}
@@ -333,7 +334,7 @@ const PDF: React.FC<CMSData> = (props) => {
             </View>
             {achievements.map((achievement) => (
               <View key={achievement.slug}>
-                <View style={styles.itemHeading}>
+                <View style={styles.itemHeading} minPresenceAhead={minPresenceAhead}>
                   <Text style={styles.bold}>
                     {achievement.attributes.achievement}
                   </Text>
@@ -347,19 +348,19 @@ const PDF: React.FC<CMSData> = (props) => {
                     {achievement.attributes.institution}
                   </Text>
                 </View>
-                <Html {...htmlProps}>{achievement.html}</Html>
+                <CustomHtml {...htmlProps}>{achievement.html}</CustomHtml>
               </View>
             ))}
           </View>
           <View style={styles.section}>
-            <View style={styles.sectionHeading}>
+            <View style={styles.sectionHeading} minPresenceAhead={minPresenceAhead}>
               <Image
                 src={`${iconPath}/circle-pen-paintbrush.png`}
                 style={styles.sectionHeadingIcon}
               />
               <Text>Hobbies &amp; Interests</Text>
             </View>
-            <Html {...hobbiesHtmlProps}>{hobbies.html}</Html>
+            <CustomHtml renderers={htmlRenderers} {...hobbiesHtmlProps}>{hobbies.html}</CustomHtml>
           </View>
         </View>
       </Page>
