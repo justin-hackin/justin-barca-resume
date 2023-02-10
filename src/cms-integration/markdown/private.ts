@@ -3,11 +3,11 @@ import fs from 'fs/promises';
 import { marked } from 'marked';
 import path from 'path';
 import invariant from 'tiny-invariant';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
 export interface PrivateInformationMarkdownAttributes {
   label: string;
-  icon: IconProp;
+  icon: IconDefinition;
 }
 
 export interface CMSPrivateInformation {
