@@ -7,7 +7,7 @@ import PDF from '../../components/PDF/PDF';
 const privateKey = process.env.PRIVATE_KEY;
 
 const handler: NextApiHandler = async (req, res) => {
-  const props = await getCMSIntegration();
+  const props = await getCMSIntegration('markdown');
 
   const secret = req.query.secret;
   let privateInformation;
