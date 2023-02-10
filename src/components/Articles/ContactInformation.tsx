@@ -1,4 +1,4 @@
-import { faIdCard } from '@fortawesome/free-solid-svg-icons';
+import { faIdCard, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
 import { CMSPersonalInformation } from '../../cms-integration/markdown/personal';
 import { CMSPrivateInformation } from '../../cms-integration/markdown/private';
