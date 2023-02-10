@@ -1,5 +1,5 @@
 import { CMSSkillCategory } from '../markdown/skills';
-import { cmsClient, renderToStaticMarkup } from './common';
+import { cmsClient } from './common';
 
 export const prismicGetSkillCategories = async (): Promise<
   CMSSkillCategory[]

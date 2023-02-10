@@ -25,8 +25,8 @@ export const ContactInformation: React.FC<ContactInformationProps> = ({
         {/* private access required */}
         {privateInformation?.map((privateField) => (
           <li className="mt-3" key={privateField.attributes.label}>
-            <strong>{privateField.attributes.label}</strong>{' '}
-            <div dangerouslySetInnerHTML={{ __html: privateField.html }} />
+            <strong>{`${privateField.attributes.label}: `}</strong>
+            <span dangerouslySetInnerHTML={{ __html: privateField.html }} />
           </li>
         ))}
       </ul>

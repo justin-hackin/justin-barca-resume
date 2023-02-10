@@ -1,5 +1,10 @@
 import { CMSPrivateInformation } from '../markdown/private';
-import { cmsClient, renderToStaticMarkup } from './common';
+import { cmsClient } from './common';
+import { asHTML } from '@prismicio/helpers';
+
+const stripParagraphHtmlSerializer = {
+  paragraph: ({ children, key, type, node, text }) => `${children}`,
+};
 
 export const prismicGetPrivateInformation = async (): Promise<
   CMSPrivateInformation[]
@@ -12,6 +17,6 @@ export const prismicGetPrivateInformation = async (): Promise<
     attributes: {
       label: data.label,
     },
-    html: renderToStaticMarkup(data.content),
+    html: asHTML(data.content, null, stripParagraphHtmlSerializer),
   }));
 };

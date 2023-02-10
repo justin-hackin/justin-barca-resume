@@ -1,5 +1,6 @@
-import { cmsClient, renderToStaticMarkup } from './common';
+import { cmsClient } from './common';
 import { CMSProfessionalExperience } from '../markdown/professional';
+import { asHTML } from '@prismicio/helpers';
 
 const dateFormatMonthYear = (dateStr: string): string =>
   new Date(dateStr).toLocaleString('en-US', {
@@ -24,7 +25,7 @@ export const prismicGetProfessionalExperiences = async (): Promise<
       startDate: dateFormatMonthYear(data.start_date),
       title: data.position_title,
     },
-    html: renderToStaticMarkup(data.position_description),
+    html: asHTML(data.position_description),
   }));
   return experiences;
 };

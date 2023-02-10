@@ -1,6 +1,7 @@
 import { CMSAchievement } from '../markdown/achievements';
 
-import { cmsClient, renderToStaticMarkup } from './common';
+import { cmsClient } from './common';
+import { asHTML } from '@prismicio/helpers';
 
 export const prismicGetAchievements = async (): Promise<CMSAchievement[]> => {
   const document = await cmsClient.getByType('educational_experience', {
@@ -10,7 +11,7 @@ export const prismicGetAchievements = async (): Promise<CMSAchievement[]> => {
         direction: 'desc',
       },
       {
-        field: 'my.educational_experiencce.achievement_title',
+        field: 'my.educational_experience.achievement_title',
       },
     ],
   });
@@ -21,6 +22,6 @@ export const prismicGetAchievements = async (): Promise<CMSAchievement[]> => {
       completionYear: data.year,
       institution: data.organization_name,
     },
-    html: renderToStaticMarkup(data.achievement_description),
+    html: asHTML(data.achievement_description),
   }));
 };
