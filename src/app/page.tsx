@@ -10,7 +10,7 @@ import { Header } from '../components/Header/Header';
 
 // @ts-expect-error Server Component
 const Page: React.FC<PageProps> = async () => {
-  const data = await getCMSIntegration();
+  const data = await getCMSIntegration('markdown');
 
   return (
     <>
