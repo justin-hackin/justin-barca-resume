@@ -12,7 +12,7 @@ const protocol = dev ? 'http' : 'https';
 const DefaultTags: React.FC = async () => {
   const host = headers().get('host');
   const baseURL = `${protocol}://${vercelURL || host}`;
-  const data = await getCMSIntegration();
+  const data = await getCMSIntegration('markdown');
   const fullName = getFullName(data.personalInformation);
   const ogImage = `${baseURL}/api/og?name=${encodeURIComponent(
     fullName,

@@ -8,7 +8,6 @@ import Professional from '../../../components/Articles/Professional';
 import Skills from '../../../components/Articles/Skills';
 import { Footer } from '../../../components/Footer/Footer';
 import { Header } from '../../../components/Header/Header';
-import { prismicGetPrivateInformation } from '../../../cms-integration/prismic/private';
 
 const privateKey = process.env.PRIVATE_KEY;
 
@@ -20,11 +19,8 @@ const Page: React.FC<PageProps> = async ({ params }) => {
     throw new Error('Not authorized');
   }
 
-  const data = await getCMSIntegration();
-  const privateInformation = await (process.env.NEXT_PUBLIC_CMS_INTEGRATION ===
-    'prismic'
-    ? prismicGetPrivateInformation
-    : getPrivateInformation)();
+  const data = await getCMSIntegration('markdown');
+  const privateInformation = await getPrivateInformation();
 
   return (
     <>
