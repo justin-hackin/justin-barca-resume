@@ -23,7 +23,7 @@ export const ContactInformation: React.FC<ContactInformationProps> = ({
       },
       html: personalInformation.attributes.location,
     },
-    ...privateInformation,
+    ...(privateInformation || []),
   ];
   return (
     <article>
