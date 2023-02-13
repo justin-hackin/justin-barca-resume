@@ -1,14 +1,23 @@
 import { faMortarBoard } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
-import { CMSAchievement } from '../../cms-integration/markdown/achievements';
 import { SectionHeading } from '../SectionHeading/SectionHeading';
 import AchievementItem from './AchievementItem';
 
-interface AchievementsProps {
-  achievements: CMSAchievement[];
+export interface AchievementMarkdownAttributes {
+  achievement: string;
+  completionYear: number;
+  institution: string;
 }
 
-const Achievements: React.FC<AchievementsProps> = ({ achievements }) => {
+export interface CMSAchievement {
+  attributes: AchievementMarkdownAttributes;
+  html: string;
+  slug: string;
+}
+
+const Achievements: React.FC<{ achievements: CMSAchievement[] }> = ({
+  achievements,
+}) => {
   return (
     <article className="rounded-xl bg-neutral-light-3 py-12 dark:bg-neutral-dark-3">
       <div className="container">

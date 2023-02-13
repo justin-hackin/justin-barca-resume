@@ -1,9 +1,35 @@
-import { faIdCard, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
+import {
+  faIdCard,
+  faMapMarkerAlt,
+  IconDefinition,
+} from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
-import { CMSPersonalInformation } from '../../cms-integration/markdown/personal';
-import { CMSPrivateInformation } from '../../cms-integration/markdown/private';
 import { SectionHeading } from '../SectionHeading/SectionHeading';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+export interface PersonalMarkdownAttributes {
+  location: string;
+  familyName: string;
+  givenName: string;
+  title?: string;
+  twitterUsername?: string;
+}
+
+export interface CMSPersonalInformation {
+  attributes: PersonalMarkdownAttributes;
+  html: string;
+}
+
+export interface PrivateInformationMarkdownAttributes {
+  label: string;
+  icon: IconDefinition;
+}
+
+export interface CMSPrivateInformation {
+  attributes: PrivateInformationMarkdownAttributes;
+  html: string;
+  slug: string;
+}
 
 interface ContactInformationProps {
   personalInformation: CMSPersonalInformation;

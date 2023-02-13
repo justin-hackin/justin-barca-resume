@@ -1,9 +1,20 @@
 import { faUniversity } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-import { CMSAchievement } from '../../cms-integration/markdown/achievements';
 import { Heading } from '../Heading/Heading';
 import Prose from '../Prose/Prose';
+
+export interface AchievementMarkdownAttributes {
+  achievement: string;
+  completionYear: number;
+  institution: string;
+}
+
+export interface CMSAchievement {
+  attributes: AchievementMarkdownAttributes;
+  html: string;
+  slug: string;
+}
 
 const AchievementItem: React.FC<CMSAchievement> = ({ attributes, html }) => {
   return (

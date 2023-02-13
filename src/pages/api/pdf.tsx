@@ -1,8 +1,8 @@
 import ReactPDF from '@react-pdf/renderer';
 import { NextApiHandler } from 'next';
-import { getCMSIntegration } from '../../cms-integration/getCMSIntegration';
-import { getPrivateInformation } from '../../cms-integration/markdown/private';
+import { getCMSIntegration } from '../../cms-integration';
 import PDF from '../../components/PDF/PDF';
+import { getPrivateInformation } from '../../cms-integration/private';
 
 const privateKey = process.env.PRIVATE_KEY;
 

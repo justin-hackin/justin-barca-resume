@@ -1,6 +1,6 @@
 import { headers } from 'next/headers';
-import resumeConfig from '../../edit-me/config/resumeConfig';
-import { getCMSIntegration } from '../cms-integration/getCMSIntegration';
+import resumeConfig from '../../config/resumeConfig';
+import { getCMSIntegration } from '../cms-integration';
 import { getFullName } from '../helpers/utils';
 import accents from '../tokens/accents';
 

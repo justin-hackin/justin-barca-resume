@@ -1,10 +1,10 @@
-import { CMSPrivateInformation } from '../markdown/private';
 import { cmsClient } from './common';
 import { asHTML } from '@prismicio/helpers';
 import {
   faEnvelopeSquare,
   faPhoneAlt,
 } from '@fortawesome/free-solid-svg-icons';
+import { CMSPrivateInformation } from '../components/Articles/ContactInformation';
 
 const stripParagraphHtmlSerializer = {
   paragraph: ({ children, key, type, node, text }) => `${children}`,
@@ -15,7 +15,7 @@ const iconNameToIcon = {
   'phone-alt': faPhoneAlt,
 };
 
-export const prismicGetPrivateInformation = async (): Promise<
+export const getPrivateInformation = async (): Promise<
   CMSPrivateInformation[]
 > => {
   const document = await cmsClient.getByType('private_information', {

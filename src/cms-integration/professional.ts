@@ -1,6 +1,18 @@
 import { cmsClient } from './common';
-import { CMSProfessionalExperience } from '../markdown/professional';
 import { asHTML } from '@prismicio/helpers';
+
+export interface ProfessionalExperienceMarkdownAttributes {
+  organization: string;
+  endDate?: string;
+  startDate: string;
+  title: string;
+}
+
+export interface CMSProfessionalExperience {
+  attributes: ProfessionalExperienceMarkdownAttributes;
+  html: string;
+  slug: string;
+}
 
 const dateFormatMonthYear = (dateStr: string): string =>
   new Date(dateStr).toLocaleString('en-US', {

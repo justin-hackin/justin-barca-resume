@@ -1,5 +1,5 @@
 const colors = require('./src/tokens');
-const resumeConfig = require('./edit-me/config/resumeConfig');
+const resumeConfig = require('./config/resumeConfig');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {

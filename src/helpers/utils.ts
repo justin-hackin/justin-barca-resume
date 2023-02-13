@@ -1,4 +1,4 @@
-import { CMSPersonalInformation } from '../cms-integration/markdown/personal';
+import { CMSPersonalInformation } from '../components/Articles/ContactInformation';
 
 export const getFullName = (
   personalInformation: CMSPersonalInformation,

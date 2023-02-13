@@ -1,9 +1,19 @@
-import { CMSAchievement } from '../markdown/achievements';
-
 import { cmsClient } from './common';
 import { asHTML } from '@prismicio/helpers';
 
-export const prismicGetAchievements = async (): Promise<CMSAchievement[]> => {
+export interface AchievementMarkdownAttributes {
+  achievement: string;
+  completionYear: number;
+  institution: string;
+}
+
+export interface CMSAchievement {
+  attributes: AchievementMarkdownAttributes;
+  html: string;
+  slug: string;
+}
+
+export const getAchievements = async (): Promise<CMSAchievement[]> => {
   const document = await cmsClient.getByType('educational_experience', {
     orderings: [
       {

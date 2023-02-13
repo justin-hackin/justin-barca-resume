@@ -1,8 +1,8 @@
 import React from 'react';
-import { CMSPersonalInformation } from '../../cms-integration/markdown/personal';
 import { getFullName } from '../../helpers/utils';
 import { Heading } from '../Heading/Heading';
 import PDFDownloadButton from '../PDF/PDFDownloadButton';
+import { CMSPersonalInformation } from '../Articles/ContactInformation';
 
 interface HeaderProps {
   personalInformation: CMSPersonalInformation;

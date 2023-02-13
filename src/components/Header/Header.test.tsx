@@ -1,4 +1,4 @@
-import { getCMSIntegration } from '../../cms-integration/getCMSIntegration';
+import { getCMSIntegration } from '../../cms-integration';
 import { render } from '../../test-utils';
 import { Header } from './Header';
 

@@ -1,8 +1,8 @@
 import { faPaintBrush } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
-import { CMSHobbies } from '../../cms-integration/markdown/hobbies';
 import Prose from '../Prose/Prose';
 import { SectionHeading } from '../SectionHeading/SectionHeading';
+import { CMSHobbies } from '../../cms-integration/hobbies';
 
 interface HobbiesAndInterestsProps {
   hobbies: CMSHobbies;

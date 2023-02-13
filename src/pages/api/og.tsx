@@ -1,6 +1,6 @@
 import { ImageResponse } from '@vercel/og';
 import { NextRequest } from 'next/server';
-import resumeConfig from '../../../edit-me/config/resumeConfig';
+import resumeConfig from '../../../config/resumeConfig';
 import accents from '../../tokens/accents';
 import neutrals from '../../tokens/neutrals';
 

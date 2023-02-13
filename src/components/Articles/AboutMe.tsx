@@ -1,8 +1,8 @@
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
-import { CMSPersonalInformation } from '../../cms-integration/markdown/personal';
 import Prose from '../Prose/Prose';
 import { SectionHeading } from '../SectionHeading/SectionHeading';
+import { CMSPersonalInformation } from './ContactInformation';
 
 interface AboutMeProps {
   personalInformation: CMSPersonalInformation;
