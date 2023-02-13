@@ -61,7 +61,7 @@ const handler = async (req: NextRequest) => {
               }}
               tw="text-6xl"
             >
-              Professional Résumé
+              Professional Resume
             </div>
             <div style={{ color: accent[12] }} tw="mt-12 text-4xl rounded-lg">
               Available online or as a PDF

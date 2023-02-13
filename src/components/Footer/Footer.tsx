@@ -50,7 +50,7 @@ export const Footer: React.FC<FooterProps> = ({
         </div>
 
         <div className="mt-1 text-sm">
-          This résumé was generated with{' '}
+          This resume was generated with{' '}
           <a className="link" href="https://nextjs.org/">
             Next.js
           </a>{' '}

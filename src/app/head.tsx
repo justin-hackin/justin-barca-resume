@@ -5,8 +5,8 @@ import DefaultTags from './DefaultTags';
 const Head = async () => {
   const data = await getCMSIntegration();
   const fullName = getFullName(data.personalInformation);
-  const title = `Résumé | ${fullName} | ${data.personalInformation.attributes.location}`;
-  const description = `Professional résumé for ${fullName}.`;
+  const title = `Resume | ${fullName} | ${data.personalInformation.attributes.location}`;
+  const description = `Professional resume for ${fullName}.`;
 
   return (
     <>
