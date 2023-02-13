@@ -1,5 +1,4 @@
-import { getCMSIntegration } from '../../../cms-integration/getCMSIntegration';
-import { getPrivateInformation } from '../../../cms-integration/markdown/private';
+import { getCMSIntegration } from '../../../cms-integration';
 import AboutMe from '../../../components/Articles/AboutMe';
 import Achievements from '../../../components/Articles/Achievements';
 import { ContactInformation } from '../../../components/Articles/ContactInformation';
@@ -8,7 +7,7 @@ import Professional from '../../../components/Articles/Professional';
 import Skills from '../../../components/Articles/Skills';
 import { Footer } from '../../../components/Footer/Footer';
 import { Header } from '../../../components/Header/Header';
-import { prismicGetPrivateInformation } from '../../../cms-integration/prismic/private';
+import { getPrivateInformation } from '../../../cms-integration/private';
 
 const privateKey = process.env.PRIVATE_KEY;
 
@@ -23,7 +22,7 @@ const Page: React.FC<PageProps> = async ({ params }) => {
   const data = await getCMSIntegration();
   const privateInformation = await (process.env.NEXT_PUBLIC_CMS_INTEGRATION ===
     'prismic'
-    ? prismicGetPrivateInformation
+    ? getPrivateInformation
     : getPrivateInformation)();
 
   return (

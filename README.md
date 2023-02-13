@@ -1,18 +1,18 @@
-# Next.js and Tailwind Résumé
+# Next.js and Tailwind Resume
 
-A résumé built especially with software professionals in mind. Impress your potential employer with a beautiful and incredibly fast résumé website, or generate a PDF for email and print.
+A resume built especially with software professionals in mind. Impress your potential employer with a beautiful and incredibly fast resume website, or generate a PDF for email and print.
 
 [See an example](https://nextjs-resume-generator.vercel.app/)
 
-Your résumé can also generate a secure URL that will display information not accessible on the public URL. The secure version can include private information such as email, phone number, and mailing address. You can send the private link to a potential employer or use it to generate a more complete PDF for yourself.
+Your resume can also generate a secure URL that will display information not accessible on the public URL. The secure version can include private information such as email, phone number, and mailing address. You can send the private link to a potential employer or use it to generate a more complete PDF for yourself.
 
 ## Features
 
-- Update your résumé with simple Markdown files
+- Update your resume with simple Markdown files
   - Integration with external headless CMS systems is possible by integrating a custom fetcher
-- Beautiful and accessible web app to view your résumé, link on social media, and send to potential employers
+- Beautiful and accessible web app to view your resume, link on social media, and send to potential employers
 - Generate a PDF on demand to view, download, or print
-- Use a secret link to generate the résumé with additional private information
+- Use a secret link to generate the resume with additional private information
 - Easily customizable
   - 19 accent color palettes out-of-the-box
   - 6 neutral color palettes out-of-the-box
@@ -37,7 +37,7 @@ Your résumé can also generate a secure URL that will display information not a
 
 ### It's FAST
 
-Your résumé will use the latest Vercel technology including Next.js 13 server components and edge functions, and will load fast even on older devices and poor network conditions.
+Your resume will use the latest Vercel technology including Next.js 13 server components and edge functions, and will load fast even on older devices and poor network conditions.
 
 ## How To Use This Project
 
@@ -61,7 +61,7 @@ Clone the project you just created to your local machine. Open it in your favori
 
 ### Color Palette Examples
 
-The résumé generator provides 19 accent color palettes and 6 neutral color palettes out-of-the-box. Below are screenshots from a few variations in both light and dark mode.
+The resume generator provides 19 accent color palettes and 6 neutral color palettes out-of-the-box. Below are screenshots from a few variations in both light and dark mode.
 
 | Light Mode                                                                          | Dark Mode                                                                         |
 | ----------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
@@ -87,11 +87,11 @@ Although the mock files should be pretty self-explanatory, you can view the [CMS
 
 Regardless of where the app is deployed, it may need access to the following environment variables:
 
-- `PRIVATE_KEY` (optional): this is a code, determined by the author, which will provide URL access to a version of the résumé that includes private information. We recommend generating this code (e.g. a UUID or using a password generator)
+- `PRIVATE_KEY` (optional): this is a code, determined by the author, which will provide URL access to a version of the resume that includes private information. We recommend generating this code (e.g. a UUID or using a password generator)
 
 ## Private Link
 
-Your project can be configured to provide a secret URL that will display more information than the public URL. This is helpful if you want to send a complete résumé to a potential employer, or if you want to generate a PDF for your own use. In this version, you can include personal information such as email, phone number, and address that you don't want visible to the general public.
+Your project can be configured to provide a secret URL that will display more information than the public URL. This is helpful if you want to send a complete resume to a potential employer, or if you want to generate a PDF for your own use. In this version, you can include personal information such as email, phone number, and address that you don't want visible to the general public.
 
 ### Setup
 
@@ -101,7 +101,7 @@ The private URL will only work if you added a `PRIVATE_KEY` environment variable
 PRIVATE_KEY=your-private-key
 ```
 
-You can then visit `https://your-url.com/private/your-private-key` to see the private version of the résumé.
+You can then visit `https://your-url.com/private/your-private-key` to see the private version of the resume.
 
 ### Adding Private Content
 

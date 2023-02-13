@@ -307,7 +307,7 @@ exports[`<Footer /> Snapshot with links 1`] = `
       <div
         class="mt-1 text-sm"
       >
-        This résumé was generated with
+        This resume was generated with
          
         <a
           class="link"
@@ -353,12 +353,12 @@ exports[`<Footer /> Snapshot without links 1`] = `
         Copyright ©
         2023
          
-        Some Body
+        Justin Barca
       </div>
       <div
         class="mt-1 text-sm"
       >
-        This résumé was generated with
+        This resume was generated with
          
         <a
           class="link"

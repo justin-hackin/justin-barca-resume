@@ -1,8 +1,8 @@
 import { faBriefcase } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
-import { CMSProfessionalExperience } from '../../cms-integration/markdown/professional';
 import { SectionHeading } from '../SectionHeading/SectionHeading';
 import ProfessionalItem from './ProfessionalItem';
+import { CMSProfessionalExperience } from '../../cms-integration/professional';
 
 interface ProfessionalProps {
   professionalExperience: CMSProfessionalExperience[];

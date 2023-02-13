@@ -87,8 +87,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Uses custom Vanilla Extract styles and components based on an early version of the Strum Design System
 - Non-PDF styles now support dark mode
 - Defaults to a Markdown integration as the CMS
-  - Files in the project pull data for the résumé
-  - Requires a code change to edit the résumé
+  - Files in the project pull data for the resume
+  - Requires a code change to edit the resume
 - Uses [OG Impact](https://ogimpact.sh/) to dynamically generate OG share images
 
 ### Removed

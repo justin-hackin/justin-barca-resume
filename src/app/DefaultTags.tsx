@@ -1,6 +1,6 @@
 import { headers } from 'next/headers';
-import resumeConfig from '../../edit-me/config/resumeConfig';
-import { getCMSIntegration } from '../cms-integration/getCMSIntegration';
+import resumeConfig from '../../config/resumeConfig';
+import { getCMSIntegration } from '../cms-integration';
 import { getFullName } from '../helpers/utils';
 import accents from '../tokens/accents';
 
@@ -26,7 +26,7 @@ const DefaultTags: React.FC = async () => {
         content={accents[resumeConfig.accentColor].light[10]}
       />
 
-      <meta property="og:site_name" content="Professional Résumé" />
+      <meta property="og:site_name" content="Professional Resume" />
       <meta property="og:url" content={baseURL} />
       <meta property="og:type" content="website" />
       <meta property="og:image" content={ogImage} />

@@ -1,7 +1,13 @@
-import { CMSLink } from '../markdown/links';
 import { cmsClient } from './common';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faTwitter } from '@fortawesome/free-brands-svg-icons/faTwitter';
+import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
+
+export interface CMSLink {
+  href: string;
+  icon?: IconDefinition;
+  title: string;
+}
 
 const iconNameToIcon = {
   github: faGithub,

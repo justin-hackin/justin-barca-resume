@@ -1,5 +1,14 @@
-import { CMSSkillCategory } from '../markdown/skills';
 import { cmsClient } from './common';
+
+export interface SkillsMarkdownAttributes {
+  title: string;
+}
+
+export interface CMSSkillCategory {
+  attributes: SkillsMarkdownAttributes;
+  html: string;
+  slug: string;
+}
 
 export const prismicGetSkillCategories = async (): Promise<
   CMSSkillCategory[]

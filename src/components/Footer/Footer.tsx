@@ -1,9 +1,9 @@
 import { faCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-import { CMSLink } from '../../cms-integration/markdown/links';
-import { CMSPersonalInformation } from '../../cms-integration/markdown/personal';
 import { getFullName } from '../../helpers/utils';
+import { CMSLink } from '../../cms-integration/links';
+import { CMSPersonalInformation } from '../Articles/ContactInformation';
 
 interface FooterProps {
   personalInformation: CMSPersonalInformation;
@@ -50,7 +50,7 @@ export const Footer: React.FC<FooterProps> = ({
         </div>
 
         <div className="mt-1 text-sm">
-          This résumé was generated with{' '}
+          This resume was generated with{' '}
           <a className="link" href="https://nextjs.org/">
             Next.js
           </a>{' '}

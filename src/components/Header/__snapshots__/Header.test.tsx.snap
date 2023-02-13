@@ -17,13 +17,11 @@ exports[`<Header /> Snapshot 1`] = `
           <h1
             class="font-bold text-neutral-light-12 dark:text-neutral-dark-12 text-4xl"
           >
-            Some Body
+            Justin Barca
           </h1>
           <h2
             class="font-bold text-neutral-light-11 dark:text-neutral-dark-11 text-3xl"
-          >
-            Official Job Title
-          </h2>
+          />
         </div>
         <div
           class="mt-6 md:mt-0"

@@ -1,6 +1,6 @@
-import { CMSPersonalInformation } from '../markdown/personal';
 import { cmsClient } from './common';
 import { asHTML } from '@prismicio/helpers';
+import { CMSPersonalInformation } from '../components/Articles/ContactInformation';
 
 export const prismicGetPersonalInformation =
   async (): Promise<CMSPersonalInformation> => {

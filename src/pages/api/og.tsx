@@ -1,6 +1,6 @@
 import { ImageResponse } from '@vercel/og';
 import { NextRequest } from 'next/server';
-import resumeConfig from '../../../edit-me/config/resumeConfig';
+import resumeConfig from '../../../config/resumeConfig';
 import accents from '../../tokens/accents';
 import neutrals from '../../tokens/neutrals';
 
@@ -61,7 +61,7 @@ const handler = async (req: NextRequest) => {
               }}
               tw="text-6xl"
             >
-              Professional Résumé
+              Professional Resume
             </div>
             <div style={{ color: accent[12] }} tw="mt-12 text-4xl rounded-lg">
               Available online or as a PDF
