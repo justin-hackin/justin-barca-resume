@@ -1,6 +1,7 @@
-import { faFilePdf } from '@fortawesome/free-solid-svg-icons';
+'use client';
+import { faFilePdf, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
+import React, { useState } from 'react';
 import ButtonLink from '../Button/ButtonLink';
 
 interface PDFDownloadButtonProps {
@@ -8,13 +9,25 @@ interface PDFDownloadButtonProps {
 }
 
 const PDFDownloadButton: React.FC<PDFDownloadButtonProps> = ({ secret }) => {
+  const [loading, setLoading] = useState(false);
   return (
     <ButtonLink
       href={secret ? `/api/pdf?secret=${secret}` : '/api/pdf'}
       size="lg"
+      className="relative"
+      onClick={() => {
+        setLoading(true);
+      }}
     >
-      <FontAwesomeIcon className="mr-2" icon={faFilePdf} size="lg" />
-      View or Download PDF
+      {loading && (
+        <span className="absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2">
+          <FontAwesomeIcon icon={faSpinner} spin />
+        </span>
+      )}
+      <span className={loading ? 'invisible' : ''}>
+        <FontAwesomeIcon className="mr-2" icon={faFilePdf} size="lg" />
+        View or Download PDF
+      </span>
     </ButtonLink>
   );
 };
