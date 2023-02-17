@@ -35,7 +35,7 @@ const neutralColor = neutrals[resumeConfig.neutralColor].light;
 const domain = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
   : 'http://localhost:3000';
-const fontPath = `${domain}/fonts/SourceSansPro`;
+const fontPath = `${domain}/fonts/Lato`;
 const iconPath = `${domain}/pdf/fa-icons`;
 
 Font.register({
@@ -44,22 +44,22 @@ Font.register({
     {
       fontStyle: 'normal',
       fontWeight: 400,
-      src: `${fontPath}/SourceSansPro-Regular.ttf`,
+      src: `${fontPath}/Lato-Regular.ttf`,
     },
     {
       fontStyle: 'italic',
       fontWeight: 400,
-      src: `${fontPath}/SourceSansPro-Italic.ttf`,
+      src: `${fontPath}/Lato-Italic.ttf`,
     },
     {
       fontStyle: 'normal',
       fontWeight: 700,
-      src: `${fontPath}/SourceSansPro-Bold.ttf`,
+      src: `${fontPath}/Lato-Bold.ttf`,
     },
     {
       fontStyle: 'italic',
       fontWeight: 700,
-      src: `${fontPath}/SourceSansPro-BoldItalic.ttf`,
+      src: `${fontPath}/Lato-BoldItalic.ttf`,
     },
   ],
 });
