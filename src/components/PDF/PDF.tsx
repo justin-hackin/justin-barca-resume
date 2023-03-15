@@ -35,34 +35,7 @@ const neutralColor = neutrals[resumeConfig.neutralColor].light;
 const domain = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
   : 'http://localhost:3000';
-const fontPath = `${domain}/fonts/Lato`;
 const iconPath = `${domain}/pdf/fa-icons`;
-
-Font.register({
-  family: 'Source Sans Pro',
-  fonts: [
-    {
-      fontStyle: 'normal',
-      fontWeight: 400,
-      src: `${fontPath}/Lato-Regular.ttf`,
-    },
-    {
-      fontStyle: 'italic',
-      fontWeight: 400,
-      src: `${fontPath}/Lato-Italic.ttf`,
-    },
-    {
-      fontStyle: 'normal',
-      fontWeight: 700,
-      src: `${fontPath}/Lato-Bold.ttf`,
-    },
-    {
-      fontStyle: 'italic',
-      fontWeight: 700,
-      src: `${fontPath}/Lato-BoldItalic.ttf`,
-    },
-  ],
-});
 
 const sidebarWidth = 2.75;
 const fontSizes = {
@@ -89,7 +62,6 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     flexWrap: 'nowrap',
-    fontFamily: 'Source Sans Pro',
     fontSize: fontSizes.xxs,
     justifyContent: 'flex-start',
     lineHeight: 1.3,
