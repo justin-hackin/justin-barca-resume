@@ -25,6 +25,7 @@ export const getAchievements = async (): Promise<CMSAchievement[]> => {
       },
     ],
   });
+
   return document.results.map(({ id, data }) => ({
     slug: id,
     attributes: {
@@ -32,6 +33,6 @@ export const getAchievements = async (): Promise<CMSAchievement[]> => {
       completionYear: data.year,
       institution: data.organization_name,
     },
-    html: asHTML(data.achievement_description),
+    html: asHTML(data.achievement_description) || '',
   }));
 };

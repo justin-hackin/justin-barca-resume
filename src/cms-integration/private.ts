@@ -27,6 +27,6 @@ export const getPrivateInformation = async (): Promise<
       label: data.label,
       icon: iconNameToIcon[data.icon_name],
     },
-    html: asHTML(data.content, null, stripParagraphHtmlSerializer),
+    html: asHTML(data.content, null, stripParagraphHtmlSerializer) || '',
   }));
 };
