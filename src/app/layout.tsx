@@ -36,9 +36,9 @@ export const generateMetadata = async (): Promise<Metadata> => {
   const baseURL = `${protocol}://${vercelURL || host}`;
   const data = await getCMSIntegration();
   const fullName = getFullName(data.personalInformation);
-  const siteName = `${fullName} Professional Résumé`;
-  const title = `Résumé | ${fullName} | ${data.personalInformation.attributes.location}`;
-  const description = `Professional résumé for ${fullName}.`;
+  const siteName = `${fullName} Professional Resume`;
+  const title = `Resume | ${fullName} | ${data.personalInformation.attributes.location}`;
+  const description = `Professional resume for ${fullName}.`;
   const ogImage = `${baseURL}/api/og?name=${encodeURIComponent(
     fullName,
   )}&theme=${resumeConfig.ogImageTheme}`;
