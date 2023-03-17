@@ -5,7 +5,7 @@ import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
 export interface CMSLink {
   href: string;
-  icon?: IconDefinition;
+  icon: IconDefinition;
   title: string;
 }
 
