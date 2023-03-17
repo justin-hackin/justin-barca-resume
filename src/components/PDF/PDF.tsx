@@ -2,7 +2,6 @@
 import {
   Document,
   Font,
-  Image,
   Page,
   StyleSheet,
   Text,
@@ -17,6 +16,15 @@ import { getFullName } from '../../helpers/utils';
 import accents from '../../tokens/accents';
 import neutrals from '../../tokens/neutrals';
 import { htmlRenderers } from './htmlRenderers';
+import { BuildingColumns } from './Icons/BuildingColumns';
+import { Calendar } from './Icons/Calendar';
+import { CircleBriefcase } from './Icons/CircleBriefcase';
+import { CircleCheck } from './Icons/CircleCheck';
+import { CircleGraduationCap } from './Icons/CircleGraduationCap';
+import { CircleIdCard } from './Icons/CircleIdCard';
+import { CirclePaintbrush } from './Icons/CirclePaintbrush';
+import { CircleUser } from './Icons/CircleUser';
+import { Star } from './Icons/Star';
 
 const CustomHtml = ({
   children,
@@ -35,17 +43,29 @@ const neutralColor = neutrals[resumeConfig.neutralColor].light;
 const domain = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
   : 'http://localhost:3000';
-const iconPath = `${domain}/pdf/fa-icons`;
+const fontPath = `${domain}/fonts`;
 
-const sidebarWidth = 2.75;
+const hyphenationCallback = (word) => {
+  // don't hyphenate
+  return [word];
+};
+
+Font.registerHyphenationCallback(hyphenationCallback);
+
+Font.registerEmojiSource({
+  format: 'png',
+  url: 'https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/72x72/',
+});
+
 const fontSizes = {
   xl: 20,
   l: 18,
-  m: 16,
-  s: 14,
+  m: 14,
+  s: 13,
   xs: 12,
   xxs: 10,
 };
+
 const spacers = {
   1: '6px',
   2: '8px',
@@ -71,7 +91,7 @@ const styles = StyleSheet.create({
     backgroundColor: neutralColor[3],
     display: 'flex',
     color: neutralColor[12],
-    flexBasis: `${sidebarWidth}in`,
+    flexBasis: '30%',
     flexDirection: 'column',
     flexGrow: 0,
     flexShrink: 1,
@@ -84,11 +104,11 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   headerTitle: { fontSize: fontSizes.xl, fontWeight: 700 },
-  headerSubtitle: { fontSize: fontSizes.l, fontWeight: 700 },
+  headerSubtitle: { fontSize: fontSizes.m, fontWeight: 700 },
   main: {
     alignSelf: 'stretch',
     display: 'flex',
-    flexBasis: 'auto',
+    flexBasis: '70%',
     flexDirection: 'column',
     flexGrow: 1,
     flexShrink: 0,
@@ -101,6 +121,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     fontSize: fontSizes.m,
     fontWeight: 700,
+    gap: spacers[1],
   },
   sectionHeadingNonHTML: {
     alignItems: 'center',
@@ -108,6 +129,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     fontSize: fontSizes.m,
     fontWeight: 700,
+    gap: spacers[1],
     marginBottom: spacers[1],
   },
   sectionHeadingIcon: {
@@ -119,7 +141,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     display: 'flex',
     flexDirection: 'row',
-    marginRight: spacers[1],
   },
   sectionHeadingStar: {
     height: fontSizes.xxs,
@@ -133,6 +154,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     fontSize: fontSizes.s,
     fontWeight: 700,
+    gap: spacers[1],
     marginBottom: spacers[1],
     marginTop: spacers[5],
   },
@@ -140,15 +162,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     display: 'flex',
     flexDirection: 'row',
+    gap: spacers[1],
     marginBottom: spacers[1],
   },
   itemSubheading: {
     fontSize: fontSizes.xxs,
     fontStyle: 'italic',
-  },
-  itemSubheadingIcon: {
-    height: fontSizes.xxs,
-    marginRight: spacers[1],
   },
   professionalTitle: {
     backgroundColor: neutralColor[12],
@@ -172,6 +191,7 @@ const styles = StyleSheet.create({
 });
 
 const htmlProps: Omit<HtmlProps, 'children'> = {
+  renderers: htmlRenderers,
   style: { fontSize: fontSizes.xxs },
 
   stylesheet: {
@@ -217,20 +237,14 @@ const PDF: React.FC<CMSData> = (props) => {
           <View style={styles.sidebarContent}>
             <View style={styles.section}>
               <View style={styles.sectionHeadingNonHTML}>
-                <Image
-                  src={`${iconPath}/circle-user.png`}
-                  style={styles.sectionHeadingIcon}
-                />
+                <CircleUser size={fontSizes.m} />
                 <Text>About Me</Text>
               </View>
               <CustomHtml {...htmlProps}>{personalInformation.html}</CustomHtml>
             </View>
             <View style={styles.section}>
               <View style={styles.sectionHeadingNonHTML}>
-                <Image
-                  src={`${iconPath}/circle-id-card.png`}
-                  style={styles.sectionHeadingIcon}
-                />
+                <CircleIdCard size={fontSizes.m} />
                 <Text>Contact Information</Text>
               </View>
               <View style={styles.flexRow}>
@@ -248,10 +262,7 @@ const PDF: React.FC<CMSData> = (props) => {
             </View>
             <View style={styles.section}>
               <View style={styles.sectionHeading}>
-                <Image
-                  src={`${iconPath}/circle-checkmark.png`}
-                  style={styles.sectionHeadingIcon}
-                />
+                <CircleCheck size={fontSizes.m} />
                 <Text>Skills &amp; Expertise</Text>
               </View>
               {skills.map((skill, skillIndex) => (
@@ -260,11 +271,7 @@ const PDF: React.FC<CMSData> = (props) => {
                     <View style={styles.sectionHeadingStars}>
                       {Array.from(Array(skills.length - skillIndex)).map(
                         (star, starIndex) => (
-                          <Image
-                            key={starIndex}
-                            src={`${iconPath}/star-yellow.png`}
-                            style={styles.sectionHeadingStar}
-                          />
+                          <Star key={starIndex} size={fontSizes.xxs} />
                         ),
                       )}
                     </View>
@@ -279,10 +286,7 @@ const PDF: React.FC<CMSData> = (props) => {
         <View style={styles.main}>
           <View style={styles.section}>
             <View style={styles.sectionHeading}>
-              <Image
-                src={`${iconPath}/circle-briefcase.png`}
-                style={styles.sectionHeadingIcon}
-              />
+              <CircleBriefcase size={fontSizes.m} />
               <Text>Professional Experience</Text>
             </View>
             {professional.map((professionalExperience) => (
@@ -299,10 +303,7 @@ const PDF: React.FC<CMSData> = (props) => {
                   </Text>
                 </View>
                 <View style={styles.itemSubheadingRow}>
-                  <Image
-                    src={`${iconPath}/calendar.png`}
-                    style={styles.itemSubheadingIcon}
-                  />
+                  <Calendar size={fontSizes.xxs} />
                   <Text style={styles.itemSubheading}>
                     {professionalExperience.attributes.startDate}—
                     {professionalExperience.attributes.endDate
@@ -321,10 +322,7 @@ const PDF: React.FC<CMSData> = (props) => {
               style={styles.sectionHeading}
               minPresenceAhead={minPresenceAhead}
             >
-              <Image
-                src={`${iconPath}/circle-graduation-cap.png`}
-                style={styles.sectionHeadingIcon}
-              />
+              <CircleGraduationCap size={fontSizes.m} />
               <Text>Achievements</Text>
             </View>
             {achievements.map((achievement) => (
@@ -338,10 +336,7 @@ const PDF: React.FC<CMSData> = (props) => {
                   </Text>
                 </View>
                 <View style={styles.itemSubheadingRow}>
-                  <Image
-                    src={`${iconPath}/university.png`}
-                    style={styles.itemSubheadingIcon}
-                  />
+                  <BuildingColumns size={fontSizes.xxs} />
                   <Text style={styles.itemSubheading}>
                     {achievement.attributes.institution}
                   </Text>
@@ -355,15 +350,10 @@ const PDF: React.FC<CMSData> = (props) => {
               style={styles.sectionHeading}
               minPresenceAhead={minPresenceAhead}
             >
-              <Image
-                src={`${iconPath}/circle-pen-paintbrush.png`}
-                style={styles.sectionHeadingIcon}
-              />
+              <CirclePaintbrush size={fontSizes.m} />
               <Text>Hobbies &amp; Interests</Text>
             </View>
-            <CustomHtml renderers={htmlRenderers} {...hobbiesHtmlProps}>
-              {hobbies.html}
-            </CustomHtml>
+            <CustomHtml {...hobbiesHtmlProps}>{hobbies.html}</CustomHtml>
           </View>
         </View>
       </Page>

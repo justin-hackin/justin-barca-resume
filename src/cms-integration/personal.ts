@@ -11,6 +11,6 @@ export const prismicGetPersonalInformation =
         givenName: data.given_name,
         location: data.location,
       },
-      html: asHTML(data.about_me_description),
+      html: asHTML(data.about_me_description) || '',
     };
   };

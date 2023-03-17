@@ -8,6 +8,6 @@ export interface CMSHobbies {
 export const getHobbies = async (): Promise<CMSHobbies> => {
   const { data } = await cmsClient.getSingle('personal_information', {});
   return {
-    html: asHTML(data.hobbies_and_interests),
+    html: asHTML(data.hobbies_and_interests) || '',
   };
 };

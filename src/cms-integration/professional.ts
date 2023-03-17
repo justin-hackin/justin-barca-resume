@@ -29,7 +29,7 @@ export const prismicGetProfessionalExperiences = async (): Promise<
       { field: 'my.professional_experience.end_date', direction: 'desc' },
     ], //'[my.professional_experience.is_current desc, my.professional_experience.end_date desc]',
   });
-  const experiences = document.results.map(({ data, id }) => ({
+  return document.results.map(({ data, id }) => ({
     slug: id,
     attributes: {
       organization: data.organization_name,
@@ -37,7 +37,6 @@ export const prismicGetProfessionalExperiences = async (): Promise<
       startDate: dateFormatMonthYear(data.start_date),
       title: data.position_title,
     },
-    html: asHTML(data.position_description),
+    html: asHTML(data.position_description) || '',
   }));
-  return experiences;
 };
