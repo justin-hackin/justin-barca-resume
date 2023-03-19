@@ -12,7 +12,7 @@ const ProfessionalItem: React.FC<CMSProfessionalExperience> = ({
   return (
     <article className="border-t-2 border-neutral-light-6 py-6 first-of-type:border-none last-of-type:pb-0 dark:border-neutral-dark-2">
       <Heading level={3}>
-        <span className="rounded-md bg-neutral-light-12 px-2 text-neutral-light-1 dark:bg-neutral-dark-12 dark:text-neutral-dark-1">
+        <span className="text-neutral-dark-1 underline underline-offset-2 dark:text-neutral-light-1">
           {attributes.title}
         </span>
         <span> at {attributes.organization}</span>

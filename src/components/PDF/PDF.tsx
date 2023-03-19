@@ -169,12 +169,11 @@ const styles = StyleSheet.create({
     fontSize: fontSizes.xxs,
     fontStyle: 'italic',
   },
-  professionalTitle: {
-    backgroundColor: neutralColor[12],
-    borderRadius: '3px',
-    color: neutralColor[1],
-    fontWeight: 700,
-    paddingHorizontal: spacers[1],
+  experienceSubtitle: {
+    fontWeight: 'bold',
+  },
+  experienceSubtitleRole: {
+    textDecoration: 'underline',
   },
   bold: { fontWeight: 700 },
   flexColumn: { display: 'flex', flexDirection: 'column' },
@@ -290,16 +289,19 @@ const PDF: React.FC<CMSData> = (props) => {
               <Text>Professional Experience</Text>
             </View>
             {professional.map((professionalExperience) => (
-              <View key={professionalExperience.slug}>
+              <View
+                style={styles.experienceSubtitle}
+                key={professionalExperience.slug}
+              >
                 <View
                   style={styles.itemHeading}
                   minPresenceAhead={minPresenceAhead}
                 >
-                  <Text style={styles.professionalTitle}>
+                  <Text style={styles.experienceSubtitleRole}>
                     {professionalExperience.attributes.title}
                   </Text>
                   <Text>
-                    &nbsp;at {professionalExperience.attributes.organization}
+                    at {professionalExperience.attributes.organization}
                   </Text>
                 </View>
                 <View style={styles.itemSubheadingRow}>
